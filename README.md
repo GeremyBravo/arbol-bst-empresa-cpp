@@ -1,112 +1,82 @@
-Árbol Binario de Búsqueda
-Un Árbol Binario de Búsqueda (BST) es una estructura de datos jerárquica donde cada nodo tiene como máximo dos hijos. La propiedad fundamental es que todos los nodos del subárbol izquierdo tienen valores menores al nodo padre, y todos los del subárbol derecho tienen valores mayores.
-Conceptos Clave
-•	Raiz: nodo superior del árbol, sin padre.
-•	Nodo interno: nodo que tiene al menos un hijo.
-•	Hoja: nodo sin hijos.
-•	Altura: numero de niveles desde la raiz hasta la hoja mas lejana.
-•	Nivel: profundidad de un nodo dentro del arbol.
-Recorridos
-•	Inorden (Izquierda - Raiz - Derecha): produce los elementos ordenados de menor a mayor.
-•	Preorden (Raiz - Izquierda - Derecha): util para copiar o serializar el arbol.
-•	Postorden (Izquierda - Derecha - Raiz): util para liberar memoria o evaluar expresiones.
-Descripción del Programa
-El programa implementa un menú interactivo en consola con las siguientes funcionalidades:
-•	Insertar empleado (código, nombre, cargo)
-•	Buscar empleado por código
-•	Mostrar la raíz del árbol
-•	Recorrido inorden
-•	Recorrido preorden
-•	Recorrido postorden
-•	Calcular y mostrar la altura del arbol
-•	Identificar y mostrar los nodos hoja
-Estructura del Código
-Struct Empleado
-Almacena los datos de cada empleado: código (int), nombre (string) y cargo (string).
-Struct Nodo
-Representa cada nodo del árbol. Contiene un objeto Empleado y punteros al hijo izquierdo y derecho. El constructor inicializa ambos punteros en nullptr.
-Clase ArbolBST
-Contiene el puntero a la raíz y los métodos privados recursivos para insertar, buscar, recorrer, calcular altura y mostrar hojas. Los métodos públicos son la interfaz para el main.
 
 
-Capturas
-1.	Menú principal
-==== MENU ARBOL BST EMPRESARIAL ====
+## Descripcion
 
-Insertar empleado
+Sistema academico desarrollado en C++ que permite gestionar estudiantes utilizando un Arbol Binario de Busqueda (BST) organizado por numero de cedula.
 
-Buscar empleado
+Cada estudiante contiene:
+- Cedula (clave de orden)
+- Apellidos
+- Nombres
+- Nota final (0-10)
+- Carrera
+- Nivel / Semestre
 
-Mostrar raíz
+## Funcionalidades
 
-Recorrido inorden
+| Opcion | Funcion | Descripcion |
+|--------|---------|-------------|
+| 1 | Insertar estudiante | Agrega un nuevo estudiante al arbol (sin cedulas duplicadas) |
+| 2 | Buscar por cedula | Encuentra y muestra los datos de un estudiante |
+| 3 | Eliminar estudiante | Elimina un estudiante del arbol manteniendo el orden |
+| 4 | Recorrido Inorden | Muestra estudiantes ordenados por cedula (menor a mayor) |
+| 5 | Recorrido Preorden | Muestra raiz -> izquierda -> derecha |
+| 6 | Recorrido Postorden | Muestra izquierda -> derecha -> raiz |
+| 7 | Recorrido por niveles (BFS) | Muestra el arbol nivel por nivel usando una cola |
+| 8 | Contar estudiantes | Muestra el total de estudiantes registrados |
+| 9 | Calcular altura | Muestra la altura del arbol (niveles desde la raiz hasta la hoja mas profunda) |
+| 10 | Estudiante con mayor nota | Encuentra y muestra al estudiante con la nota mas alta |
+| 11 | Estudiante con menor nota | Encuentra y muestra al estudiante con la nota mas baja |
+| 12 | Mostrar aprobados | Lista estudiantes con nota >= 7 |
+| 13 | Mostrar reprobados | Lista estudiantes con nota < 7 |
+| 14 | Salir | Termina la ejecucion del programa |
 
-Recorrido preorden
+## Estructura del Proyecto
 
-Recorrido postorden
+```
+prueba-practica-arboles-cpp-java/
+└── cpp/
+    ├── Estudiante.h      # Clase con los datos del estudiante
+    ├── Estudiante.cpp
+    ├── Nodo.h            # Clase nodo del arbol
+    ├── Nodo.cpp
+    ├── ArbolBST.h        # Clase del arbol binario de busqueda
+    ├── ArbolBST.cpp
+    ├── main.cpp          # Menu interactivo principal
+    └── README.md
+```
 
-Mostrar altura
+## Compilacion y Ejecucion
 
-Mostrar hojas
 
-Salir
+### Windows
 
-2.	Inserción de empleados
-Seleccione una opción: 1
-Codigo: 50
-Nombre: Empresa UTA
-Cargo: Raíz
+```bash
+cd cpp
+g++ -o sistema.exe main.cpp Estudiante.cpp Nodo.cpp ArbolBST.cpp
+sistema.exe
+```
 
-3.	Búsqueda
-Seleccione una opción: 2
-Ingrese código a buscar: 70
 
-Empleado encontrado:
-Codigo: 70 | Nombre: Gerente Finanzas | Cargo: Nodo interno
+## Tecnologias Utilizadas
 
-4.	Recorridos
-•	Mostrar recorrido inorden.
-Recorrido Inorden:
-Codigo: 20 | Nombre: Emp | Cargo: Hoja
-Codigo: 30 | Nombre: Gerente Ventas | Cargo: Nodo interno
-Codigo: 40 | Nombre: Emp 2 | Cargo: Hoja
-Codigo: 50 | Nombre: Empresa UTA | Cargo: Raíz
-Codigo: 60 | Nombre: Emp 3 | Cargo: Hoja
-Codigo: 70 | Nombre: Gerente Finanzas | Cargo: Nodo interno
-Codigo: 80 | Nombre: Emp 4 | Cargo: Hoja
+- C++17
+- Programacion Orientada a Objetos
+- Arboles Binarios de Busqueda (BST)
+- Recursividad
+- Cola STL para BFS
+- Git y GitHub
 
-•	Mostrar recorrido preorden.
-Recorrido Preorden:
-Codigo: 50 | Nombre: Empresa UTA | Cargo: Raíz
-Codigo: 30 | Nombre: Gerente Ventas | Cargo: Nodo interno
-Codigo: 20 | Nombre: Emp | Cargo: Hoja
-Codigo: 40 | Nombre: Emp 2 | Cargo: Hoja
-Codigo: 70 | Nombre: Gerente Finanzas | Cargo: Nodo interno
-Codigo: 60 | Nombre: Emp 3 | Cargo: Hoja
-Codigo: 80 | Nombre: Emp 4 | Cargo: Hoja
+## Datos de Prueba
 
-•	Mostrar recorrido postorden.
-Recorrido Postorden:
-Codigo: 20 | Nombre: Emp | Cargo: Hoja
-Codigo: 40 | Nombre: Emp 2 | Cargo: Hoja
-Codigo: 30 | Nombre: Gerente Ventas | Cargo: Nodo interno
-Codigo: 60 | Nombre: Emp 3 | Cargo: Hoja
-Codigo: 80 | Nombre: Emp 4 | Cargo: Hoja
-Codigo: 70 | Nombre: Gerente Finanzas | Cargo: Nodo interno
-Codigo: 50 | Nombre: Empresa UTA | Cargo: Raíz
- 
-5.	Altura y hoja.
-Mostrar altura del árbol
-Seleccione una opcion: 7
+El programa incluye 5 estudiantes de prueba al iniciar:
 
-Altura del arbol: 3
+| Cedula | Apellidos | Nombres | Nota | Carrera | Nivel |
+|--------|-----------|---------|------|---------|-------|
+| 1804000001 | Perez Lopez | Juan Carlos | 8.5 | sistemas | 3ro |
+| 1804000002 | Garcia Mora | Maria Jose | 6.0 | civil | 2do |
+| 1804000003 | Torres Salas | Luis Miguel | 9.2 | mecanica | 5to |
+| 1804000004 | Sanchez Rios | Ana Lucia | 4.5 | electronica | 1ro |
+| 1804000005 | Flores Vega | Pedro Antonio | 7.0 | sistemas | 4to |
 
-Mostrar nodos hoja
-Seleccione una opcion: 8
-
-Nodos hoja:
-Codigo: 20 | Nombre: Emp | Cargo: Hoja
-Codigo: 40 | Nombre: Emp 2 | Cargo: Hoja
-Codigo: 60 | Nombre: Emp 3 | Cargo: Hoja
-Codigo: 80 | Nombre: Emp 4 | Cargo: Hoja
 
